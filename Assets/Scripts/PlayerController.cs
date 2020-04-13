@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Types of cat the character can be transformed according to the food it eats
+public enum CatType {
+    normalCat,
+    fitCat,
+    fatCat
+};
+
 public class PlayerController : MonoBehaviour
 {
 
@@ -19,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayerMask;
     [SerializeField]
     float _floorDetectionLine = 0.7f;
+    public Sprite normalCatSprite, fitCatSprite, fatCatSprite;
 
     // Awake is called when the script instance is being loaded.
     void Awake() 
@@ -36,7 +45,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     // This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
@@ -60,6 +69,7 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(this.transform.position, Vector3.down * _floorDetectionLine, Color.red);
     }
 
+    // Control the player movement
     void Run()
     {
         // Fliping sprite according to player direction
@@ -69,7 +79,8 @@ public class PlayerController : MonoBehaviour
         // Moving player
         _playerRB.velocity = new Vector3(dir * _runningSpeed, _playerRB.velocity.y);
     }
-
+    
+    // Control the player jump
     void Jump()
     {
         if(IsTouchingTheGround()) {
@@ -77,11 +88,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Check if player is touching the ground
     bool IsTouchingTheGround()
     {
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, 
                                              Vector2.down, _floorDetectionLine, groundLayerMask);
 
         return hit;
+    }
+
+    // Change the cat to catType
+    public void ChangeCat(CatType catType)
+    {
+        switch(catType){
+            case CatType.normalCat:
+                _playerSR.sprite = normalCatSprite;
+            break;
+            case CatType.fitCat:
+            _playerSR.sprite = fitCatSprite;
+            break;
+            case CatType.fatCat:
+                _playerSR.sprite = fatCatSprite;
+            break;
+        }
     }
 }
