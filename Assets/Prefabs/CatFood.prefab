@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916d3557329cd407b8c832731327eb50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _foodType: 1
+  foodType: 1
   _speed: 5
   _lineDistance: 0.1
 --- !u!114 &8017942634678938201
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916d3557329cd407b8c832731327eb50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _foodType: 0
+  foodType: 0
   _speed: 5
   _lineDistance: 0.1
 --- !u!61 &4327442419419888129

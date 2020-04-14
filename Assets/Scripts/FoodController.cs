@@ -17,8 +17,7 @@ public class FoodController : MonoBehaviour
     SpriteRenderer _foodSR;
 
     // Food vars
-    [SerializeField]
-    FoodType _foodType;
+    public FoodType foodType;
 
 
     // Moving effets vars
@@ -53,35 +52,7 @@ public class FoodController : MonoBehaviour
     // Function to hide the game object
     public void Hide()
     {
-        _foodSR.enabled = false;
-    }
-
-
-    //Sent when another object enters a trigger collider attached to this
-    // object (2D physics only).
-    void OnTriggerEnter2D(Collider2D collider) {
-        
-        // Detect if collide with player
-        if (collider.tag == "Player") {
-            
-            this.Hide();
-
-
-            // Transform the cat according to the food type eaten
-            switch(_foodType) {
-                case FoodType.healthyFood: 
-                    Debug.Log("healthy");
-                break;
-                case FoodType.junkFood:
-                    Debug.Log("fat");
-                break;
-                case FoodType.catFood:
-                    Debug.Log("normal");
-                break;
-            }
-
-        }
-
+        this.gameObject.SetActive(false);
     }
 
 }

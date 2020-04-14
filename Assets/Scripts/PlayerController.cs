@@ -2,14 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-// Types of cat the character can be transformed according to the food it eats
-public enum CatType {
-    normalCat,
-    fitCat,
-    fatCat
-};
-
 public class PlayerController : MonoBehaviour
 {
     // Components vars
@@ -93,19 +85,32 @@ public class PlayerController : MonoBehaviour
         return hit;
     }
 
-    // Change the cat to catType
-    public void ChangeCat(CatType catType)
+    // Transform the cat according to the food type eaten
+    public void TransformCat(FoodType food)
     {
-        switch(catType){
-            case CatType.normalCat:
-                _playerSR.sprite = normalCatSprite;
+        switch(food){
+            case FoodType.healthyFood:
+                _playerSR.sprite = fitCatSprite;    
             break;
-            case CatType.fitCat:
-            _playerSR.sprite = fitCatSprite;
-            break;
-            case CatType.fatCat:
+            case FoodType.junkFood:
                 _playerSR.sprite = fatCatSprite;
             break;
+            case FoodType.catFood:
+                _playerSR.sprite = normalCatSprite;
+            break;
+        }
+    }
+
+    /// Sent when another object enters a trigger collider attached to this
+    /// object (2D physics only).
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        // Detect if player collide with food to eat it 
+        if (other.gameObject.CompareTag("Food")){
+            FoodController food = other.GetComponent<FoodController>();
+            food.Hide();
+            this.TransformCat(food.foodType);
         }
     }
 }
