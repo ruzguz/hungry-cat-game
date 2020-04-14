@@ -12,7 +12,6 @@ public enum CatType {
 
 public class PlayerController : MonoBehaviour
 {
-
     // Components vars
     Rigidbody2D _playerRB;
     SpriteRenderer _playerSR;
