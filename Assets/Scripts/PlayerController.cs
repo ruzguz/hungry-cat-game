@@ -54,10 +54,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump")) {
             Jump();
-            Debug.Log("Saltando");
         }
-
-        Debug.Log(IsTouchingTheGround());
 
         // If player press running buttons 
         if (Input.GetAxis("Horizontal") != 0) {
