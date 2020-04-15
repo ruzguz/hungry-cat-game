@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     // Components vars
     Rigidbody2D _playerRB;
     SpriteRenderer _playerSR;
+    CircleCollider2D _headCollider;
+    BoxCollider2D _bodyCollider;
 
     // Player vars
     [SerializeField]
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
     {
         _playerRB = this.GetComponent<Rigidbody2D>();
         _playerSR = this.GetComponent<SpriteRenderer>();
+        _headCollider = this.GetComponent<CircleCollider2D>();
+        _bodyCollider = this.GetComponent<BoxCollider2D>();
     }
 
     // Start is called before the first frame update
@@ -90,16 +94,28 @@ public class PlayerController : MonoBehaviour
     {
         switch(food){
             case FoodType.healthyFood:
-                _playerSR.sprite = fitCatSprite;    
+                _playerSR.sprite = fitCatSprite;  
+                //ResizeCatColliders(0.06f, -0.32f, 1.14f, 0.85f, 0.25f, 0.31f, 0.34f);  
             break;
             case FoodType.junkFood:
                 _playerSR.sprite = fatCatSprite;
+                //ResizeCatColliders(-0.01f, -0.4f, 1f, 0.8f, 0f, 0.3f, 0.34f);
             break;
             case FoodType.catFood:
                 _playerSR.sprite = normalCatSprite;
+                //ResizeCatColliders(0.25f, -0.35f, 1.08f, 0.52f, 0.41f, 0.22f, 0.34f);
             break;
         }
     }
+
+    // Function to set player collider 
+    // void ResizeCatColliders(float bodyOffsetX, float bodyOffsetY, float bodyX, float bodyY, float headX, float headY, float headRadius)
+    // {
+    //     _bodyCollider.offset = new Vector2(bodyOffsetX, bodyOffsetY);
+    //     _bodyCollider.size = new Vector2(bodyX, bodyY);
+    //     _headCollider.offset = new Vector2(headX, headY);
+    //     _headCollider.radius = headRadius;
+    // }
 
     /// Sent when another object enters a trigger collider attached to this
     /// object (2D physics only).

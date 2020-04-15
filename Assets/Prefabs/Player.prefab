@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.25361776, y: -0.3597837}
+  m_Offset: {x: 0.25, y: -0.35}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0827646, y: 0.5204326}
+  m_Size: {x: 1.08, y: 0.52}
   m_EdgeRadius: 0
 --- !u!58 &4964669426497799238
 CircleCollider2D:
@@ -125,9 +125,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.41286612, y: 0.22412753}
+  m_Offset: {x: 0.41, y: 0.22}
   serializedVersion: 2
-  m_Radius: 0.34674525
+  m_Radius: 0.34
 --- !u!50 &4964669426497799241
 Rigidbody2D:
   serializedVersion: 4
@@ -167,6 +167,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _floorDetectionLine: 0.7
-  normalCatSprite: {fileID: 0}
-  fitCatSprite: {fileID: 0}
-  fatCatSprite: {fileID: 0}
+  normalCatSprite: {fileID: -3273148809790934638, guid: d5df863bb589b49eea07c77ebc2dac66,
+    type: 3}
+  fitCatSprite: {fileID: -155387999550939215, guid: d5df863bb589b49eea07c77ebc2dac66,
+    type: 3}
+  fatCatSprite: {fileID: 5904469585442748547, guid: d5df863bb589b49eea07c77ebc2dac66,
+    type: 3}
