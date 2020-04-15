@@ -64,12 +64,23 @@ public class PlayerController : MonoBehaviour
     // Control the player movement
     void Run()
     {
+        // getting axis and dir
+        float axis = Input.GetAxis("Horizontal");
+        bool dir = (axis < 0)?true:false;
+
+        // Changing Collider position according to player direction
+        if (_playerSR.flipX != dir) {
+            foreach (Collider2D c in GetComponents<Collider2D>()) {
+                c.offset = new Vector2(c.offset.x * -1, c.offset.y);
+            }
+        }
+
         // Fliping sprite according to player direction
-        float dir = Input.GetAxis("Horizontal");
-        _playerSR.flipX = (dir < 0)?true:false;
+        _playerSR.flipX = dir;
+
 
         // Moving player
-        _playerRB.velocity = new Vector3(dir * _runningSpeed, _playerRB.velocity.y);
+        _playerRB.velocity = new Vector3(axis * _runningSpeed, _playerRB.velocity.y);
     }
     
     // Control the player jump
