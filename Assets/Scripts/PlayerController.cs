@@ -2,6 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct CatColliderValues {
+    public float bodyOffsetX;
+    public float bodyOffsetY;
+    public float bodyWidth;
+    public float bodyHeight;
+    public float headX;
+    public float headY;
+    public float headRadius;
+
+    public CatColliderValues(float bX, float bY, float bW, float bH, float hX, float hY, float hR){
+        bodyOffsetX = bX;
+        bodyOffsetY = bY;
+        bodyWidth = bW;
+        bodyHeight = bH;
+        headX = hX;
+        headY = hY;
+        headRadius = hR;
+    }
+
+    public CatColliderValues InvertedPosition(){
+        return new CatColliderValues(-bodyOffsetX, bodyOffsetY, bodyWidth,
+                                    bodyHeight, -headX, headY, headRadius);
+    }
+}
+
 public class PlayerController : MonoBehaviour
 {
     // Components vars
@@ -21,6 +46,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float _floorDetectionLine = 0.7f;
     public Sprite normalCatSprite, fitCatSprite, fatCatSprite;
+
+    // Vars for collider sizes for each cat type 
+    CatColliderValues _catCV = new CatColliderValues(0.25f, -0.35f, 1.08f, 0.52f, 0.41f, 0.22f, 0.34f);
+    CatColliderValues _fitCatCV = new CatColliderValues(0, -0.4f, 1f, 0.8f, 0, 0.3f, 0.34f);
+    CatColliderValues _fatCatCV = new CatColliderValues(0.06f, -0.32f, 1.14f, 0.85f, 0.25f, 0.31f, 0.34f); 
+
 
     // Awake is called when the script instance is being loaded.
     void Awake() 
@@ -106,33 +137,32 @@ public class PlayerController : MonoBehaviour
         switch(food){
             case FoodType.healthyFood:
                 _playerSR.sprite = fitCatSprite;  
-                //ResizeCatColliders(0.06f, -0.32f, 1.14f, 0.85f, 0.25f, 0.31f, 0.34f);  
+                ResizeCatColliders((_playerSR.flipX)?_fitCatCV.InvertedPosition():_fitCatCV);  
             break;
             case FoodType.junkFood:
                 _playerSR.sprite = fatCatSprite;
-                //ResizeCatColliders(-0.01f, -0.4f, 1f, 0.8f, 0f, 0.3f, 0.34f);
+                ResizeCatColliders((_playerSR.flipX)?_fatCatCV.InvertedPosition():_fatCatCV);  
             break;
             case FoodType.catFood:
                 _playerSR.sprite = normalCatSprite;
-                //ResizeCatColliders(0.25f, -0.35f, 1.08f, 0.52f, 0.41f, 0.22f, 0.34f);
+                ResizeCatColliders((_playerSR.flipX)?_catCV.InvertedPosition():_catCV);  
             break;
         }
     }
 
     // Function to set player collider 
-    // void ResizeCatColliders(float bodyOffsetX, float bodyOffsetY, float bodyX, float bodyY, float headX, float headY, float headRadius)
-    // {
-    //     _bodyCollider.offset = new Vector2(bodyOffsetX, bodyOffsetY);
-    //     _bodyCollider.size = new Vector2(bodyX, bodyY);
-    //     _headCollider.offset = new Vector2(headX, headY);
-    //     _headCollider.radius = headRadius;
-    // }
+    void ResizeCatColliders(CatColliderValues c)
+    {
+        _bodyCollider.offset = new Vector2(c.bodyOffsetX, c.bodyOffsetY);
+        _bodyCollider.size = new Vector2(c.bodyWidth, c.bodyHeight);
+        _headCollider.offset = new Vector2(c.headX, c.headY);
+        _headCollider.radius = c.headRadius;
+    }
 
     /// Sent when another object enters a trigger collider attached to this
     /// object (2D physics only).
     void OnTriggerEnter2D(Collider2D other)
     {
-
         // Detect if player collide with food to eat it 
         if (other.gameObject.CompareTag("Food")){
             FoodController food = other.GetComponent<FoodController>();
