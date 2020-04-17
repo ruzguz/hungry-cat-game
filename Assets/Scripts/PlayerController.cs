@@ -137,15 +137,25 @@ public class PlayerController : MonoBehaviour
         switch(food){
             case FoodType.healthyFood:
                 _playerSR.sprite = fitCatSprite;  
-                ResizeCatColliders((_playerSR.flipX)?_fitCatCV.InvertedPosition():_fitCatCV);  
+                ResizeCatColliders((_playerSR.flipX)?_fitCatCV.InvertedPosition():_fitCatCV);
+                _floorDetectionLine = 0.9f;  
+                _jumpForce = 22f;
+                _runningSpeed = 12f;
+
             break;
             case FoodType.junkFood:
                 _playerSR.sprite = fatCatSprite;
-                ResizeCatColliders((_playerSR.flipX)?_fatCatCV.InvertedPosition():_fatCatCV);  
+                ResizeCatColliders((_playerSR.flipX)?_fatCatCV.InvertedPosition():_fatCatCV);
+                _floorDetectionLine = 0.8f;  
+                _jumpForce = 15f;
+                _runningSpeed = 4f;
             break;
             case FoodType.catFood:
                 _playerSR.sprite = normalCatSprite;
-                ResizeCatColliders((_playerSR.flipX)?_catCV.InvertedPosition():_catCV);  
+                ResizeCatColliders((_playerSR.flipX)?_catCV.InvertedPosition():_catCV); 
+                _floorDetectionLine = 0.7f; 
+                _jumpForce = 20f;
+                _runningSpeed = 8f;
             break;
         }
     }
