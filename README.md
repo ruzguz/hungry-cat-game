@@ -1,2 +1,2 @@
 # hungry-cat-game
-A simple game about a cat eating all the food in a room 
+A cat looking to escape a room by gaining skills depending on what he eats
