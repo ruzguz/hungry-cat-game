@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     float _floorDetectionLine = 0.7f;
     public Sprite normalCatSprite, fitCatSprite, fatCatSprite;
 
+    public int force; 
+
     // Awake is called when the script instance is being loaded.
     void Awake() 
     {
@@ -31,17 +33,6 @@ public class PlayerController : MonoBehaviour
         _bodyCollider = this.GetComponent<BoxCollider2D>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     // This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
     void FixedUpdate() 
@@ -83,9 +74,7 @@ public class PlayerController : MonoBehaviour
     // Check if player is touching the ground
     bool IsTouchingTheGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, 
-                                             Vector2.down, _floorDetectionLine, groundLayerMask);
-
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position,Vector2.down, _floorDetectionLine, groundLayerMask);
         return hit;
     }
 
