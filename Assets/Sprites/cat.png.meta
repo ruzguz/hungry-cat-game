@@ -23,6 +23,54 @@ TextureImporter:
   - first:
       213: -2666075053548052033
     second: cat-jump-2
+  - first:
+      213: 2656336351118485934
+    second: cat_idle_1
+  - first:
+      213: -4600886580272595312
+    second: cat_idle_2
+  - first:
+      213: -4977358388856394852
+    second: cat_run_1
+  - first:
+      213: -2645502679141385153
+    second: cat_run_2
+  - first:
+      213: 5931359193820970387
+    second: cat_run_3
+  - first:
+      213: 4131228686746393302
+    second: cat_jump_1
+  - first:
+      213: 5171809832577116929
+    second: cat_jump_2
+  - first:
+      213: -1452714511649490640
+    second: fatcat_idle_1
+  - first:
+      213: 7780358614470776179
+    second: fatcat_idle_2
+  - first:
+      213: 7892033834191237442
+    second: fatcat_run_1
+  - first:
+      213: 4015063438408095402
+    second: fatcat_run_2
+  - first:
+      213: -2653735917790409300
+    second: fatcat_run_3
+  - first:
+      213: -4762345550913035320
+    second: fatcat_run_4
+  - first:
+      213: -5607423812347924107
+    second: fatcat_jump_1
+  - first:
+      213: 7067646878219523604
+    second: fatcat_jump_2
+  - first:
+      213: -8183501194736795486
+    second: fatcat_jump_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -67,7 +115,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -134,7 +182,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cat-idle-1
+      name: cat_idle_1
       rect:
         serializedVersion: 2
         x: 0
@@ -148,14 +196,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8fa15e4822beee00800000000000000
-      internalID: 1075993247170539406
+      spriteID: ea9ef5466d33dd420800000000000000
+      internalID: 2656336351118485934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat-idle-2
+      name: cat_idle_2
       rect:
         serializedVersion: 2
         x: 32
@@ -169,14 +217,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58b910b0cc7121030800000000000000
-      internalID: 3463857228526754693
+      spriteID: 09e7df2280e5620c0800000000000000
+      internalID: -4600886580272595312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat-run-1
+      name: cat_run_1
       rect:
         serializedVersion: 2
         x: 0
@@ -190,14 +238,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb22c6201a93fd360800000000000000
-      internalID: 7196534093254501055
+      spriteID: c9b6760aaeedceab0800000000000000
+      internalID: -4977358388856394852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat-run-2
+      name: cat_run_2
       rect:
         serializedVersion: 2
         x: 32
@@ -211,14 +259,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c39507a907057640800000000000000
-      internalID: 5076971892968362947
+      spriteID: f3cfe6d6459494bd0800000000000000
+      internalID: -2645502679141385153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat-run-3
+      name: cat_run_3
       rect:
         serializedVersion: 2
         x: 64
@@ -232,14 +280,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be3c49b051e6dae30800000000000000
-      internalID: 4516387037990142955
+      spriteID: 39d32f6d2cb605250800000000000000
+      internalID: 5931359193820970387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat-jump-1
+      name: cat_jump_1
       rect:
         serializedVersion: 2
         x: 0
@@ -253,14 +301,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c66df1e530686240800000000000000
-      internalID: 4785180388622165704
+      spriteID: 6da1c673a92155930800000000000000
+      internalID: 4131228686746393302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cat-jump-2
+      name: cat_jump_2
       rect:
         serializedVersion: 2
         x: 32
@@ -274,8 +322,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb1ecb04dd2300bd0800000000000000
-      internalID: -2666075053548052033
+      spriteID: 10ba1ac24a5f5c740800000000000000
+      internalID: 5171809832577116929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fatcat_idle_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 039b31539dbe6dbe0800000000000000
+      internalID: -1452714511649490640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fatcat_idle_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3755ea010f269fb60800000000000000
+      internalID: 7780358614470776179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fatcat_run_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 241355a55f2268d60800000000000000
+      internalID: 7892033834191237442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fatcat_run_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 208
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa619fcacee58b730800000000000000
+      internalID: 4015063438408095402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fatcat_run_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 208
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad486c2e390c2bd0800000000000000
+      internalID: -2653735917790409300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fatcat_run_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 208
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c3aa2414ffb8edb0800000000000000
+      internalID: -4762345550913035320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fatcat_jump_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5717fe780cd6e22b0800000000000000
+      internalID: -5607423812347924107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fatcat_jump_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4165c26c363551260800000000000000
+      internalID: 7067646878219523604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fatcat_jump_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a08abc750d5e6e80800000000000000
+      internalID: -8183501194736795486
       vertices: []
       indices: 
       edges: []
