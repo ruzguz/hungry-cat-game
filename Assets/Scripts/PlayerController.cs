@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,8 +22,6 @@ public class PlayerController : MonoBehaviour
     float _floorDetectionLine = 0.7f;
     public Sprite normalCatSprite, fitCatSprite, fatCatSprite;
 
-    public int force; 
-
     // Awake is called when the script instance is being loaded.
     void Awake() 
     {
@@ -33,6 +31,17 @@ public class PlayerController : MonoBehaviour
         _bodyCollider = this.GetComponent<BoxCollider2D>();
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
     // This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
     void FixedUpdate() 
@@ -55,12 +64,16 @@ public class PlayerController : MonoBehaviour
     // Control the player movement
     void Run()
     {
+        // getting axis and dir
+        float axis = Input.GetAxis("Horizontal");
+        bool dir = (axis < 0)?true:false;
+
         // Fliping sprite according to player direction
-        float dir = Input.GetAxis("Horizontal");
-        _playerSR.flipX = (dir < 0)?true:false;
+        _playerSR.flipX = dir;
+
 
         // Moving player
-        _playerRB.velocity = new Vector3(dir * _runningSpeed, _playerRB.velocity.y);
+        _playerRB.velocity = new Vector3(axis * _runningSpeed, _playerRB.velocity.y);
     }
     
     // Control the player jump
@@ -74,7 +87,9 @@ public class PlayerController : MonoBehaviour
     // Check if player is touching the ground
     bool IsTouchingTheGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position,Vector2.down, _floorDetectionLine, groundLayerMask);
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, 
+                                             Vector2.down, _floorDetectionLine, groundLayerMask);
+
         return hit;
     }
 
@@ -84,33 +99,27 @@ public class PlayerController : MonoBehaviour
         switch(food){
             case FoodType.healthyFood:
                 _playerSR.sprite = fitCatSprite;  
-                //ResizeCatColliders(0.06f, -0.32f, 1.14f, 0.85f, 0.25f, 0.31f, 0.34f);  
+                _jumpForce = 22f;
+                _runningSpeed = 12f;
+
             break;
             case FoodType.junkFood:
                 _playerSR.sprite = fatCatSprite;
-                //ResizeCatColliders(-0.01f, -0.4f, 1f, 0.8f, 0f, 0.3f, 0.34f);
+                _jumpForce = 15f;
+                _runningSpeed = 4f;
             break;
             case FoodType.catFood:
                 _playerSR.sprite = normalCatSprite;
-                //ResizeCatColliders(0.25f, -0.35f, 1.08f, 0.52f, 0.41f, 0.22f, 0.34f);
+                _jumpForce = 20f;
+                _runningSpeed = 8f;
             break;
         }
     }
-
-    // Function to set player collider 
-    // void ResizeCatColliders(float bodyOffsetX, float bodyOffsetY, float bodyX, float bodyY, float headX, float headY, float headRadius)
-    // {
-    //     _bodyCollider.offset = new Vector2(bodyOffsetX, bodyOffsetY);
-    //     _bodyCollider.size = new Vector2(bodyX, bodyY);
-    //     _headCollider.offset = new Vector2(headX, headY);
-    //     _headCollider.radius = headRadius;
-    // }
 
     /// Sent when another object enters a trigger collider attached to this
     /// object (2D physics only).
     void OnTriggerEnter2D(Collider2D other)
     {
-
         // Detect if player collide with food to eat it 
         if (other.gameObject.CompareTag("Food")){
             FoodController food = other.GetComponent<FoodController>();

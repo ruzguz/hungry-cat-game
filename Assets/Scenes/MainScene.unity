@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -96,8 +96,10 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 6272c42ca07c34514873a020884fc6d9,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -117,6 +119,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -210,11 +214,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 399318227696322981, guid: 45fa2d0c5c0114429b5011dc06fe6879,
-        type: 3}
-      propertyPath: m_Name
-      value: Pizza
-      objectReference: {fileID: 0}
     - target: {fileID: 399318227696322979, guid: 45fa2d0c5c0114429b5011dc06fe6879,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -269,6 +268,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 399318227696322981, guid: 45fa2d0c5c0114429b5011dc06fe6879,
+        type: 3}
+      propertyPath: m_Name
+      value: Pizza
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45fa2d0c5c0114429b5011dc06fe6879, type: 3}
@@ -358,20 +362,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4964669426497799240, guid: 4b459af7e02ac428a9a43cc0516e3ca5,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 4964669426497799237, guid: 4b459af7e02ac428a9a43cc0516e3ca5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.04
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4964669426497799237, guid: 4b459af7e02ac428a9a43cc0516e3ca5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.62
+      value: -1.37
       objectReference: {fileID: 0}
     - target: {fileID: 4964669426497799237, guid: 4b459af7e02ac428a9a43cc0516e3ca5,
         type: 3}
@@ -417,6 +416,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964669426497799240, guid: 4b459af7e02ac428a9a43cc0516e3ca5,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b459af7e02ac428a9a43cc0516e3ca5, type: 3}
