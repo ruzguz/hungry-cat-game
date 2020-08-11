@@ -60,9 +60,9 @@ crashlytics-build.properties
 
 # Ignore psd files
 *.psd
-Assets/Sprites/psd/
+/Assets/Sprites/psd
+/Assets/Sprites/psd.meta
 
 # Ignore test folder in assets
 /Assets/Tests
 /Assets/Tests.meta
-
