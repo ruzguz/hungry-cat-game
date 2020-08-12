@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     // Other vars
     public LayerMask groundLayerMask;
     [SerializeField]
-    float _floorDetectionLine = 0.7f;
-    public Sprite normalCatSprite, fitCatSprite, fatCatSprite;
+    float _floorDetectionLine = 0.5f;
 
     // Awake is called when the script instance is being loaded.
     void Awake() 
@@ -47,7 +46,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate() 
     {
 
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButton("Jump")) {
             Jump();
         }
 
@@ -79,7 +78,7 @@ public class PlayerController : MonoBehaviour
     // Control the player jump
     void Jump()
     {
-        if(IsTouchingTheGround()) {
+        if(Physics2D.Raycast(this.transform.position, Vector2.down, _floorDetectionLine, groundLayerMask)) {
             _playerRB.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         }
     }
@@ -97,19 +96,16 @@ public class PlayerController : MonoBehaviour
     public void TransformCat(FoodType food)
     {
         switch(food){
-            case FoodType.healthyFood:
-                _playerSR.sprite = fitCatSprite;  
+            case FoodType.healthyFood:  
                 _jumpForce = 22f;
                 _runningSpeed = 12f;
 
             break;
             case FoodType.junkFood:
-                _playerSR.sprite = fatCatSprite;
                 _jumpForce = 15f;
                 _runningSpeed = 4f;
             break;
             case FoodType.catFood:
-                _playerSR.sprite = normalCatSprite;
                 _jumpForce = 20f;
                 _runningSpeed = 8f;
             break;
