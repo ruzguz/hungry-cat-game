@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer _playerSR;
     CircleCollider2D _headCollider;
     BoxCollider2D _bodyCollider;
+    Animator _playerAnimator;
 
     // Player vars
     [SerializeField]
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         _playerSR = this.GetComponent<SpriteRenderer>();
         _headCollider = this.GetComponent<CircleCollider2D>();
         _bodyCollider = this.GetComponent<BoxCollider2D>();
+        _playerAnimator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -45,7 +47,7 @@ public class PlayerController : MonoBehaviour
     // This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
     void FixedUpdate() 
     {
-
+        // Jump action
         if (Input.GetButton("Jump")) {
             Jump();
         }
@@ -53,9 +55,15 @@ public class PlayerController : MonoBehaviour
         // If player press running buttons 
         if (Input.GetAxis("Horizontal") != 0) {
             Run();
+            _playerAnimator.SetBool("isRunning", true);
         } else {
             _playerRB.velocity = new Vector3(0, _playerRB.velocity.y);
+            _playerAnimator.SetBool("isRunning", false);
         }
+
+        // Check if player is touching the ground
+            _playerAnimator.SetBool("isTouchingTheGround", IsTouchingTheGround());
+
 
         Debug.DrawRay(this.transform.position, Vector3.down * _floorDetectionLine, Color.red);
     }
@@ -99,15 +107,17 @@ public class PlayerController : MonoBehaviour
             case FoodType.healthyFood:  
                 _jumpForce = 22f;
                 _runningSpeed = 12f;
-
+                _playerAnimator.SetTrigger("fitCat");
             break;
             case FoodType.junkFood:
                 _jumpForce = 15f;
                 _runningSpeed = 4f;
+                _playerAnimator.SetTrigger("fatCat");
             break;
             case FoodType.catFood:
                 _jumpForce = 20f;
                 _runningSpeed = 8f;
+                _playerAnimator.SetTrigger("normalCat");
             break;
         }
     }
