@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4964669426497799239}
   - component: {fileID: 4964669426497799241}
   - component: {fileID: 1421223618638192434}
-  - component: {fileID: 8427470508671052077}
+  - component: {fileID: 4964669427205717632}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -152,13 +152,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _floorDetectionLine: 0.7
-  normalCatSprite: {fileID: -3273148809790934638, guid: d5df863bb589b49eea07c77ebc2dac66,
-    type: 3}
-  fitCatSprite: {fileID: -155387999550939215, guid: d5df863bb589b49eea07c77ebc2dac66,
-    type: 3}
-  fatCatSprite: {fileID: 5904469585442748547, guid: d5df863bb589b49eea07c77ebc2dac66,
-    type: 3}
---- !u!95 &8427470508671052077
+--- !u!95 &4964669427205717632
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
