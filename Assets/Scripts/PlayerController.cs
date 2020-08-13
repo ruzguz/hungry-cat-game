@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer _playerSR;
     CircleCollider2D _headCollider;
     BoxCollider2D _bodyCollider;
+    Animator _playerAnimator;
 
     // Player vars
     [SerializeField]
@@ -19,8 +20,7 @@ public class PlayerController : MonoBehaviour
     // Other vars
     public LayerMask groundLayerMask;
     [SerializeField]
-    float _floorDetectionLine = 0.7f;
-    public Sprite normalCatSprite, fitCatSprite, fatCatSprite;
+    float _floorDetectionLine = 0.5f;
 
     // Awake is called when the script instance is being loaded.
     void Awake() 
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
         _playerSR = this.GetComponent<SpriteRenderer>();
         _headCollider = this.GetComponent<CircleCollider2D>();
         _bodyCollider = this.GetComponent<BoxCollider2D>();
+        _playerAnimator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -46,17 +47,23 @@ public class PlayerController : MonoBehaviour
     // This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
     void FixedUpdate() 
     {
-
-        if (Input.GetButtonDown("Jump")) {
+        // Jump action
+        if (Input.GetButton("Jump")) {
             Jump();
         }
 
         // If player press running buttons 
         if (Input.GetAxis("Horizontal") != 0) {
             Run();
+            _playerAnimator.SetBool("isRunning", true);
         } else {
             _playerRB.velocity = new Vector3(0, _playerRB.velocity.y);
+            _playerAnimator.SetBool("isRunning", false);
         }
+
+        // Check if player is touching the ground
+            _playerAnimator.SetBool("isTouchingTheGround", IsTouchingTheGround());
+
 
         Debug.DrawRay(this.transform.position, Vector3.down * _floorDetectionLine, Color.red);
     }
@@ -79,7 +86,7 @@ public class PlayerController : MonoBehaviour
     // Control the player jump
     void Jump()
     {
-        if(IsTouchingTheGround()) {
+        if(Physics2D.Raycast(this.transform.position, Vector2.down, _floorDetectionLine, groundLayerMask)) {
             _playerRB.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         }
     }
@@ -97,21 +104,20 @@ public class PlayerController : MonoBehaviour
     public void TransformCat(FoodType food)
     {
         switch(food){
-            case FoodType.healthyFood:
-                _playerSR.sprite = fitCatSprite;  
+            case FoodType.healthyFood:  
                 _jumpForce = 22f;
                 _runningSpeed = 12f;
-
+                _playerAnimator.SetTrigger("fitCat");
             break;
             case FoodType.junkFood:
-                _playerSR.sprite = fatCatSprite;
                 _jumpForce = 15f;
                 _runningSpeed = 4f;
+                _playerAnimator.SetTrigger("fatCat");
             break;
             case FoodType.catFood:
-                _playerSR.sprite = normalCatSprite;
                 _jumpForce = 20f;
                 _runningSpeed = 8f;
+                _playerAnimator.SetTrigger("normalCat");
             break;
         }
     }

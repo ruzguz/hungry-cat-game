@@ -19,18 +19,18 @@ public class ObstacleController : MonoBehaviour
     {
 
         //Verificar si el Objecto es gato y la fuerza es suficiente
-        if (Objeto.gameObject.tag == "Player" && Objeto.gameObject.GetComponent<PlayerController>().force >= weight)
-        {
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;//Bloquea su movimiento en Y
-        }
+        // if (Objeto.gameObject.tag == "Player" && Objeto.gameObject.GetComponent<PlayerController>().force >= weight)
+        // {
+        //     GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        //     GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;//Bloquea su movimiento en Y
+        // }
     }
     private void OnCollisionExit2D(Collision2D Objeto)
     {
         //Verificar si el Objecto es gato y la fuerza es suficiente, si la fuerza no era suficiente significa que no estaba empujando
-        if (Objeto.gameObject.tag == "Player" && Objeto.gameObject.GetComponent<PlayerController>().force >= weight)
-        {
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        }
+        // if (Objeto.gameObject.tag == "Player" && Objeto.gameObject.GetComponent<PlayerController>().force >= weight)
+        // {
+        //     GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        // }
     }
 }
