@@ -151,7 +151,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  _floorDetectionLine: 0.7
+  _floorDetectionLine: 0.5
 --- !u!95 &4964669427205717632
 Animator:
   serializedVersion: 3
