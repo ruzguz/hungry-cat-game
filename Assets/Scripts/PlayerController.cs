@@ -17,11 +17,12 @@ public class PlayerController : MonoBehaviour
     float _jumpForce = 20f;
 
     // Other vars
-    public LayerMask groundLayerMask;
+    public LayerMask groundLayerMask, WallLayerMask;
     [SerializeField]
     float _floorDetectionLine = 0.7f;
     public Sprite normalCatSprite, fitCatSprite, fatCatSprite;
 
+    public int force;
     // Awake is called when the script instance is being loaded.
     void Awake() 
     {
@@ -31,22 +32,8 @@ public class PlayerController : MonoBehaviour
         _bodyCollider = this.GetComponent<BoxCollider2D>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    // This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
-    void FixedUpdate() 
-    {
-
         if (Input.GetButtonDown("Jump")) {
             Jump();
         }
@@ -59,7 +46,10 @@ public class PlayerController : MonoBehaviour
         }
 
         Debug.DrawRay(this.transform.position, Vector3.down * _floorDetectionLine, Color.red);
+
+ 
     }
+
 
     // Control the player movement
     void Run()
@@ -84,12 +74,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+
+
+
     // Check if player is touching the ground
     bool IsTouchingTheGround()
     {
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, 
                                              Vector2.down, _floorDetectionLine, groundLayerMask);
-
         return hit;
     }
 
@@ -126,5 +119,13 @@ public class PlayerController : MonoBehaviour
             food.Hide();
             this.TransformCat(food.foodType);
         }
+    }
+
+    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        if (collision.gameObject.CompareTag("Wall"))
+            Debug.Log("Hola");
     }
 }
