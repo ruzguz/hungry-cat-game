@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     //M_Ground indica que se esta moviendo por el piso
     //Si Wall es = 1 entonces Ground = 0 y viceversa
     int M_Wall=0,M_Ground=1;
+  
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
@@ -83,13 +84,13 @@ public class PlayerController : MonoBehaviour
     {
         if (IsTouchingTheGround())
         {
+           
             _playerRB.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         }
-        /*if (IsTouchingTheWall())
+        if (IsTouchingTheWall())
         {
-            Debug.Log("Hola Caracola");
-            //_playerRB.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-        }*/
+            _playerRB.AddForce(Vector2.left * _jumpForce*100, ForceMode2D.Impulse);
+        }
     }
     // Check if player is touching the ground
     bool IsTouchingTheGround()
@@ -102,7 +103,10 @@ public class PlayerController : MonoBehaviour
     bool IsTouchingTheWall()
     {
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position,
-                                             new Vector2(1*Convert.ToInt32(Input.GetAxis("Horizontal")), 0), _floorDetectionLine, WallLayerMask);
+                                             Vector2.left, _floorDetectionLine, WallLayerMask);
+        if (hit==false)
+        hit = Physics2D.Raycast(this.transform.position,
+                                             Vector2.right, _floorDetectionLine, WallLayerMask);
         return hit;
     }
 
@@ -162,6 +166,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    
     void climb(bool climbing)
     {
         if (climbing == true)
@@ -171,6 +176,7 @@ public class PlayerController : MonoBehaviour
             transform.GetComponent<Rigidbody2D>().gravityScale = 0.2f;
             //-si la colision es con un muro, gira 90 grados por 1(si es a la derecha) o -1(si es a la izquierda) en el eje Z
             transform.rotation = Quaternion.AngleAxis((90 * Convert.ToInt32(Input.GetAxis("Horizontal"))), new Vector3(0, 0, 1));
+            transform.position = new Vector2((0.5f*Convert.ToInt32(Input.GetAxis("Horizontal"))) +gameObject.transform.position.x, 0 + gameObject.transform.position.y);
         }
         else
         {
