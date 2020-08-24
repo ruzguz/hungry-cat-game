@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 //Prueba
-public class PlayerController : MonoBehaviour
+public class PlayerControllerRoom : MonoBehaviour
 {
     // Components vars
     Rigidbody2D _playerRB;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     //M_Ground indica que se esta moviendo por el piso
     //Si Wall es = 1 entonces Ground = 0 y viceversa
     int M_Wall=0,M_Ground=1;
-  
+    Boolean InAir=false;
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
@@ -58,7 +58,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // Check if player is touching the ground
-            _playerAnimator.SetBool("isTouchingTheGround", IsTouchingTheGround());
+        // _playerAnimator.SetBool("isTouchingTheGround", IsTouchingTheGround());
+        _playerAnimator.SetBool("isTouchingTheGround", (M_Ground == 1)  ? true : false);
 
 
         Debug.DrawRay(this.transform.position, Vector3.down * _floorDetectionLine, Color.red);
@@ -88,16 +89,20 @@ public class PlayerController : MonoBehaviour
     // Control the player jump
     void Jump()
     {
-        if(Physics2D.Raycast(this.transform.position, Vector2.down, _floorDetectionLine, groundLayerMask)) {
-            _playerRB.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+        //if(Physics2D.Raycast(this.transform.position, Vector2.down, _floorDetectionLine, groundLayerMask)) {
+        if (M_Ground == 1 && InAir==false) {
+   
+        _playerRB.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            InAir = true;
         }
-        if (IsTouchingTheWall())
+        if (M_Wall==1 && InAir == false)
         {
-            _playerRB.AddForce(Vector2.left * _jumpForce*100, ForceMode2D.Impulse);
+            
+            _playerRB.AddForce(Vector2.left * _jumpForce, ForceMode2D.Impulse);
         }
     }
     // Check if player is touching the ground
-    bool IsTouchingTheGround()
+    /*bool IsTouchingTheGround()
     {
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position,
                                              Vector2.down, _floorDetectionLine, groundLayerMask);
@@ -112,7 +117,7 @@ public class PlayerController : MonoBehaviour
         hit = Physics2D.Raycast(this.transform.position,
                                              Vector2.right, _floorDetectionLine, WallLayerMask);
         return hit;
-    }
+    }*/
 
 
     // Transform the cat according to the food type eaten
@@ -120,17 +125,17 @@ public class PlayerController : MonoBehaviour
     {
         switch(food){
             case FoodType.healthyFood:  
-                _jumpForce = 22f;
+                _jumpForce = 10f;
                 _runningSpeed = 12f;
                 _playerAnimator.SetTrigger("fitCat");
             break;
             case FoodType.junkFood:
-                _jumpForce = 15f;
+                _jumpForce = 5f;
                 _runningSpeed = 4f;
                 _playerAnimator.SetTrigger("fatCat");
             break;
             case FoodType.catFood:
-                _jumpForce = 20f;
+                _jumpForce = 7f;
                 _runningSpeed = 8f;
                 _playerAnimator.SetTrigger("normalCat");
             break;
@@ -164,6 +169,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             climb(false);
+            InAir = false;
         }
 
     }
@@ -182,6 +188,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+
             M_Ground = 1; M_Wall = 0;
             transform.GetComponent<Rigidbody2D>().gravityScale = 1;
             transform.rotation = Quaternion.AngleAxis((0 * Convert.ToInt32(Input.GetAxis("Horizontal"))), new Vector3(0, 0, 1));

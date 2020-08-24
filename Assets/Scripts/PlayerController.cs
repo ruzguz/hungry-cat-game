@@ -30,8 +30,9 @@ public class PlayerController : MonoBehaviour
     //M_Ground indica que se esta moviendo por el piso
     //Si Wall es = 1 entonces Ground = 0 y viceversa
     int M_Wall=0,M_Ground=1;
-  
+
     // Awake is called when the script instance is being loaded.
+
     void Awake()
     {
         _playerRB = this.GetComponent<Rigidbody2D>();

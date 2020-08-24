@@ -4,20 +4,20 @@ using UnityEngine;
 
 
 // Different types of food 
-public enum FoodType {
+public enum FoodTypeRoom {
     healthyFood,
     catFood,
     junkFood
 }
 
-public class FoodController : MonoBehaviour
+public class FoodControllerRoom : MonoBehaviour
 {
 
     // Components vars
     SpriteRenderer _foodSR;
 
     // Food vars
-    public FoodType foodType;
+    public FoodTypeRoom foodType;
 
 
     // Moving effets vars
