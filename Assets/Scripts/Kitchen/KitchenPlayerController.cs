@@ -61,7 +61,7 @@ public class KitchenPlayerController : MonoBehaviour
         _playerSR.flipX = dir;
 
         // Moving player
-        _playerRB.velocity = new Vector3((axis * _runningSpeed), (axis * _runningSpeed) + (_playerRB.velocity.y));
+        _playerRB.velocity = new Vector3((axis * _runningSpeed), _playerRB.velocity.y);
     }
 
     // Control the player jump
@@ -70,15 +70,12 @@ public class KitchenPlayerController : MonoBehaviour
         if(IsTouchingTheGround()) {
             _playerRB.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         }
-        if (IsTouchingTheWall())
-        {
-            //_playerRB.AddForce(Vector2.left * _jumpForce*100, ForceMode2D.Impulse);
-        }
     }
+
     // Check if player is touching the ground
     bool IsTouchingTheGround()
     {
-        // Raycasting the floor 
+        // Detectiong the floor
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position,
                                              Vector2.down, 
                                              _floorDetectionLine, 
