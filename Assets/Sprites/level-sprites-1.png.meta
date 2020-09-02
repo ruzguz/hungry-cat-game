@@ -91,7 +91,7 @@ TextureImporter:
     second: yarnball-3
   - first:
       213: 3960535528496026661
-    second: exit-close
+    second: exit-open
   - first:
       213: -1088003884293636667
     second: arrow-l
@@ -653,7 +653,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exit-open
+      name: exit-close
       rect:
         serializedVersion: 2
         x: 70
@@ -884,7 +884,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exit-close
+      name: exit-open
       rect:
         serializedVersion: 2
         x: 70
