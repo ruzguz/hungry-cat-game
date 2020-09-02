@@ -169,7 +169,7 @@ MonoBehaviour:
   _jumpForce: 20
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   WallLayerMask:
     serializedVersion: 2
     m_Bits: 0
