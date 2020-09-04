@@ -633,6 +633,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1919625785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 917105058543365129, guid: 14c1d281cd7e3458d8202c83ff7fd60b,
+    type: 3}
+  m_PrefabInstance: {fileID: 917105059524510881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!251 &1919625786
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919625785}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &917105059524510881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -644,6 +669,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Refrigerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 917105058543365130, guid: 14c1d281cd7e3458d8202c83ff7fd60b,
+        type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 917105058543365131, guid: 14c1d281cd7e3458d8202c83ff7fd60b,
         type: 3}
@@ -985,6 +1015,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7850474289045299971, guid: 76ab37326e97847fe832f99b30a19023,
+        type: 3}
+      propertyPath: m_SurfaceArc
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130113648559330860, guid: 76ab37326e97847fe832f99b30a19023,
+        type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3130113648559330861, guid: 76ab37326e97847fe832f99b30a19023,
         type: 3}
       propertyPath: m_LocalPosition.x
