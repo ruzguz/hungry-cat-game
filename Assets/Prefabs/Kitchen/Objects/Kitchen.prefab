@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7850474289045299971}
   - component: {fileID: 5103256905965076306}
   - component: {fileID: 7195543783145283505}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Kitchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd8a37b14f994a4a9d1ce2239056b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounceForce: 10
 --- !u!1001 &7051406254605845657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,6 +176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: outlet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013911283782397201, guid: 805eb5b6b686c4c99a4c41f9fa5700ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1013911283782397203, guid: 805eb5b6b686c4c99a4c41f9fa5700ec,
         type: 3}
