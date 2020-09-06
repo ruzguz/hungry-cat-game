@@ -8,6 +8,7 @@ public class KitchenPlayerController : MonoBehaviour
     Rigidbody2D _playerRB;
     SpriteRenderer _playerSR;
     Animator _playerAnimator;
+    Collider2D _playerCollider;
 
     // Player vars
     [SerializeField]
@@ -18,7 +19,7 @@ public class KitchenPlayerController : MonoBehaviour
     bool _isBurned = false;
 
     // Other vars
-    public LayerMask groundLayerMask, WallLayerMask;
+    public LayerMask groundLayerMask, WallLayerMask, platformLayerMask;
     [SerializeField]
     float _floorDetectionLine = 0.5f;
   
@@ -28,7 +29,8 @@ public class KitchenPlayerController : MonoBehaviour
         _playerRB = this.GetComponent<Rigidbody2D>();
         _playerSR = this.GetComponent<SpriteRenderer>();
         _playerAnimator = GetComponent<Animator>();
-    }
+        _playerCollider = GetComponent<Collider2D>();
+    } 
 
     void Update()
     {
@@ -78,11 +80,12 @@ public class KitchenPlayerController : MonoBehaviour
     bool IsTouchingTheGround()
     {
         // Detectiong the floor
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position,
-                                             Vector2.down, 
-                                             _floorDetectionLine, 
-                                             groundLayerMask);
-        return hit;
+        if (Physics2D.Raycast(this.transform.position, Vector2.down, _floorDetectionLine, groundLayerMask)
+            || Physics2D.Raycast(this.transform.position, Vector2.down, _floorDetectionLine, platformLayerMask)) {
+            return true;
+        }
+
+        return false;
     }
     // Check if player is touching the wall
     bool IsTouchingTheWall()
@@ -136,8 +139,14 @@ public class KitchenPlayerController : MonoBehaviour
     {
         // Detect when player touch the floor
         if (collision.gameObject.CompareTag("Floor")) {
-            this.SetIsBurned(false);
-            GameObject.Find("Kitchen").GetComponent<KitchenController>().GetKitchenCollider().enabled = true;
+
+            // Check if cat is burned
+            if (_isBurned) {
+                this.SetIsBurned(false);
+                // Do not Ignore collision between player and platforms
+                Physics2D.IgnoreLayerCollision(0, 10, false);
+                Debug.Log(Physics2D.GetIgnoreLayerCollision(0,10));
+            }
         }
 
         // if (collision.gameObject.CompareTag("Wall"))

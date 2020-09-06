@@ -213,21 +213,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4964669426497799236, guid: a34c5d4c580a941c383334be5f3f49f4,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964669426497799236, guid: a34c5d4c580a941c383334be5f3f49f4,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964669426497799236, guid: a34c5d4c580a941c383334be5f3f49f4,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4964669426497799237, guid: a34c5d4c580a941c383334be5f3f49f4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -487,6 +472,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1919625786, guid: 14c1d281cd7e3458d8202c83ff7fd60b, type: 3}
+      propertyPath: m_UseColliderMask
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 917105058543365129, guid: 14c1d281cd7e3458d8202c83ff7fd60b,
         type: 3}
       propertyPath: m_Name
@@ -852,6 +841,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7850474289045299971, guid: 76ab37326e97847fe832f99b30a19023,
+        type: 3}
+      propertyPath: m_UseColliderMask
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3130113648559330861, guid: 76ab37326e97847fe832f99b30a19023,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -990,6 +984,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8139277668912318354, guid: 6c7ebf46af18b4933a379433f5cb0a7b,
+        type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8139277668912318355, guid: 6c7ebf46af18b4933a379433f5cb0a7b,
         type: 3}
       propertyPath: m_Name
