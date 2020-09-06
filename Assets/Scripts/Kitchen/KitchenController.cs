@@ -9,6 +9,10 @@ public class KitchenController : MonoBehaviour
     Animator kitchenAnimator;
     Collider2D kitchenCollider;
 
+    // Other vars
+    [SerializeField]
+    float bounceForce = 10;
+
     // Is called before the frame 0
     private void Awake() {
         kitchenAnimator = this.GetComponent<Animator>();
@@ -32,13 +36,19 @@ public class KitchenController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) {
 
-        Debug.Log("Colllide with any");
-
         // Check if player collide with the kitchen on
         if (other.gameObject.CompareTag("Player") && this.kitchenAnimator.GetBool("isOn")) {
-            Debug.Log("collide with the player");
-            other.gameObject.GetComponent<KitchenPlayerController>().SetIsBurned(true);
+            // get player
+            KitchenPlayerController p = other.gameObject.GetComponent<KitchenPlayerController>();
+            p.SetIsBurned(true);
+            p.GetPlayerRB().AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
+            kitchenCollider.enabled = false;
         }
 
+    }
+
+    // Setters and Getters
+    public Collider2D GetKitchenCollider() {
+        return this.kitchenCollider;
     }
 }

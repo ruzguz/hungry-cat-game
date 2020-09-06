@@ -134,11 +134,10 @@ public class KitchenPlayerController : MonoBehaviour
     // Collision handler
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("PLayer collider");
         // Detect when player touch the floor
         if (collision.gameObject.CompareTag("Floor")) {
-            Debug.Log("Player - collider with floor");
             this.SetIsBurned(false);
+            GameObject.Find("Kitchen").GetComponent<KitchenController>().GetKitchenCollider().enabled = true;
         }
 
         // if (collision.gameObject.CompareTag("Wall"))
@@ -153,7 +152,10 @@ public class KitchenPlayerController : MonoBehaviour
 
     }
 
-    // set value of isBurned 
+    // Settets and Getters
+
+
+    // isBurned
     public void SetIsBurned(bool value){
         // Change isBurned value
         this._isBurned = value;
@@ -166,6 +168,11 @@ public class KitchenPlayerController : MonoBehaviour
     }
 
     
+    // playerRB
+    public Rigidbody2D GetPlayerRB(){
+        return this._playerRB;
+    }
+
     void climb(bool climbing)
     {
 
