@@ -8,6 +8,7 @@ TagManager:
   - Food
   - Obstacle
   - Wall
+  - Floor
   layers:
   - Default
   - TransparentFX

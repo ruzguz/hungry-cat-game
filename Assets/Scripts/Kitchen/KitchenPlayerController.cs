@@ -14,6 +14,8 @@ public class KitchenPlayerController : MonoBehaviour
     float _runningSpeed = 8f;
     [SerializeField]
     float _jumpForce = 20f;
+    [SerializeField]
+    bool _isBurned = false;
 
     // Other vars
     public LayerMask groundLayerMask, WallLayerMask;
@@ -28,7 +30,7 @@ public class KitchenPlayerController : MonoBehaviour
         _playerAnimator = GetComponent<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
         if (Input.GetButtonDown("Jump"))
         {
@@ -132,6 +134,13 @@ public class KitchenPlayerController : MonoBehaviour
     // Collision handler
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("PLayer collider");
+        // Detect when player touch the floor
+        if (collision.gameObject.CompareTag("Floor")) {
+            Debug.Log("Player - collider with floor");
+            this.SetIsBurned(false);
+        }
+
         // if (collision.gameObject.CompareTag("Wall"))
         // {
         //    climb(true);
@@ -142,6 +151,18 @@ public class KitchenPlayerController : MonoBehaviour
         //     climb(false);
         // }
 
+    }
+
+    // set value of isBurned 
+    public void SetIsBurned(bool value){
+        // Change isBurned value
+        this._isBurned = value;
+        // Change sprite color
+        _playerSR.color = this._isBurned?Color.red:Color.white;
+    }    
+    
+    public bool GetIsBurned(){
+        return this._isBurned;
     }
 
     
