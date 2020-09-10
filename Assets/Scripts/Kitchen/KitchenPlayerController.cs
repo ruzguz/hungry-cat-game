@@ -148,17 +148,6 @@ public class KitchenPlayerController : MonoBehaviour
                 Debug.Log(Physics2D.GetIgnoreLayerCollision(0,10));
             }
         }
-
-        // if (collision.gameObject.CompareTag("Wall"))
-        // {
-        //    climb(true);
-        // }
-        // else
-        // if (collision.gameObject.CompareTag("Ground"))
-        // {
-        //     climb(false);
-        // }
-
     }
 
     // Settets and Getters
