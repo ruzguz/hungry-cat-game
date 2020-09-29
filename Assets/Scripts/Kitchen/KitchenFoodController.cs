@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Different types of food 
+public enum FoodType {
+    healthyFood,
+    catFood,
+    junkFood
+}
+
 public class KitchenFoodController : MonoBehaviour
 {
    // Components vars
@@ -36,8 +43,8 @@ public class KitchenFoodController : MonoBehaviour
     void Update()
     {
         // Moving effect
-        //this.transform.position = new Vector3(transform.position.x, 
-        //                                      startPosition.y + Mathf.Sin(Time.time * _speed) * _lineDistance);
+        this.transform.position = new Vector3(transform.position.x, 
+                                              startPosition.y + Mathf.Sin(Time.time * _speed) * _lineDistance);
     }
 
     // Function to hide the game object

@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// Different types of food 
-public enum FoodType {
-    healthyFood,
-    catFood,
-    junkFood
-}
-
 public class FoodController : MonoBehaviour
 {
 

@@ -125,10 +125,11 @@ public class KitchenPlayerController : MonoBehaviour
     /// object (2D physics only).
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("eating food!!!");
         // Detect if player collide with food to eat it 
         if (other.gameObject.CompareTag("Food"))
         {
-            FoodController food = other.GetComponent<FoodController>();
+            KitchenFoodController food = other.GetComponent<KitchenFoodController>();
             food.Hide();
             this.TransformCat(food.foodType);
         }
